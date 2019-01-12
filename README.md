@@ -30,7 +30,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-TDB
+TBD
 
 ### Break down into end to end tests
 
@@ -38,7 +38,7 @@ TBD
 
 ### And coding style tests
 
-TDB
+TBD
 
 ## Deployment
 
@@ -56,5 +56,5 @@ TBD
 
 ## Contributing
 
-TDB
+TBD
 
