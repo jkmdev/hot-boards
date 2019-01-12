@@ -3,7 +3,7 @@
 
 # Hot Boards
 
-A forum like reddit where posts and comments are scored, but on different criteria beyond upvotes and downvotes. 
+A forum like reddit or Hackernews where posts and comments are scored, but on different criteria beyond upvotes and downvotes. 
 
 ## Getting Started
 
