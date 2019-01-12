@@ -7,6 +7,8 @@ import userRoutes from './routes/users';
 import postRoutes from './routes/posts';
 import boardRoutes from './routes/boards';
 
+const path = require('path')
+
 // connect database to application
 mongoose.connect(
     'mongodb://localhost:27017/hb', () => {
@@ -17,6 +19,9 @@ mongoose.connect(
 const app = express();
 
 // Middleware
+
+// forcing express to use build output from client
+app.use( express.static( `${__dirname}/../build` ) );
 
 // response loggin tool
 app.use(morgan('dev'));
@@ -40,6 +45,12 @@ app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 app.use("/boards", boardRoutes);
 
+// 'catchall' handler for requests that don't
+// match previously defined ones
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '/../build/index.html'));
+  })
+
 // app-wide error handling
 app.use((req, res, next) => {
     const error = new Error('Not Found');
@@ -56,8 +67,5 @@ app.use((error, req, res, next) => {
         }
     });
 });
-
-// forcing express to use build output
-app.use( express.static( `${__dirname}/../build` ) );
 
 export default app;
