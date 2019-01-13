@@ -53,8 +53,8 @@ TBD
 Clone the repo onto the VM you're deploying the app to and navigate to the project folder.
 
 ```
-git clone project
-cd project-folder
+git clone git@github.com:jkmdev/hot-boards.git
+cd hot-boards
 ```
 
 Create a production build of the site. The server will run using these new files, after creating them you can run the server, which itself will serve the client side of the app. However you need to run the server with pm2 so that it always runs in the background, even when you close the terminal.
