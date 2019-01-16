@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Nav from './components/layout/nav.js';
 import Board from './components/pages/board/board.js';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 // import axios from "axios";
 
@@ -25,8 +27,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <CssBaseline />
+        <head>
+          <meta
+              name="viewport"
+              content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
+          </meta>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        </head>
+
         <Nav />
         <Board />
       </div>

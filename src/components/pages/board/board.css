@@ -1,0 +1,12 @@
+:local(.board) {
+    display: flex;
+    justify-content: center;
+}
+
+:local(.posts) {
+    width: 80%;
+}
+
+:local(.post) {
+    margin-bottom: 100px;
+}

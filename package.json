@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.8.3",
+    "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "concurrently": "^4.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.3"
+    "react-scripts": "2.1.3",
+    "typeface-roboto": "0.0.54"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -27,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "nodemon bin/dev",
+    "start": "react-scripts build && nodemon bin/dev",
     "clean": "rm -rf dist",
     "start-all": "concurrently \"cd server && nodemon 'bin/dev'\" \"cd client && npm start\""
   },

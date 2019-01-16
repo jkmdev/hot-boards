@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import Typography from '@material-ui/core/Typography';
 
 class Nav extends Component {
   render() {
-    return <p>Hello, world!</p>;
+    return (
+      <Typography variant="h4" gutterBottom>
+        Hot Boards
+      </Typography>
+    );
   }
 }
 
