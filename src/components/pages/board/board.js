@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import Dialog from '@material-ui/core/Dialog';
 
 import ListItem from '../../common/list-item/list-item.js';
-import Grid from '@material-ui/core/Grid';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
+import BoardInfo from '../../common/board-info/board-info.js';
 
 import styles from './board.css';
+import { string } from "prop-types";
 
 class Board extends Component {
 
   state = {
     data: Object,
-    posts: []
+    posts: [],
+    title: string,
+    description: string
   };
 
   componentDidMount() {
@@ -23,8 +25,9 @@ class Board extends Component {
     axios.get('http://localhost:3001/boards/General')
     .then(response => {
       this.setState({ posts: response.data.boardInfo.posts });
-      console.log(this.state.posts);
-      // this.state.posts.map((post) => console.log(post));
+      this.setState({ title: response.data.title });
+      this.setState({ boardInfo: response.data.description });
+      console.log(this.state);
     })
     .catch(function (error) {
       throw Error(error);
@@ -48,43 +51,17 @@ class Board extends Component {
     const { posts } = this.state.posts;
     return (
       <div className={styles.board}>
-
+        <div className={styles.boardInfo}>
+         <BoardInfo title={this.state.title} boardInfo={this.state.boardInfo}></BoardInfo>
+        </div>
         <div className={styles.posts}>
-
-        {/* {data.title} */}
-
-        {/* <ul>
-          {posts.length <= 0
-            ? "NO POSTS YET"
-            : posts.map(post => (
-                <li style={{ padding: "10px" }} key={post._id}>
-                  {post.title}
-                </li>
-              ))}
-        </ul>  */}
-
-        <div>
-          {this.createPosts()}
+          <div>
+            {this.createPosts()}
+          </div>
         </div>
-
-          
-        </div>
-
       </div>
     );
   }
 }
 
 export default Board; 
-
-        {/* // <ul>
-        //   {data.length <= 0
-        //     ? "NO DB ENTRIES YET"
-        //     : data.map(dat => (
-        //         <li style={{ padding: "10px" }} key={data.message}>
-        //           <span style={{ color: "gray" }}> id: </span> {dat.id} <br />
-        //           <span style={{ color: "gray" }}> data: </span>
-        //           {dat.message}
-        //         </li>
-        //       ))}
-        // </ul> */}

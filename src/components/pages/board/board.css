@@ -1,6 +1,17 @@
 :local(.board) {
+    padding-top: 20px;
     display: flex;
     justify-content: center;
+    background-color: gainsboro;
+    min-height: 700px;
+}
+
+:local(.boardInfo) {
+    width: 300px;
+    margin-right: 20px;
+    height: 100%;
+    /* margin-bottom: 10px;
+    background-color: white; */
 }
 
 :local(.posts) {
