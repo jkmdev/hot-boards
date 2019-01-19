@@ -29,6 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start": "react-scripts build && nodemon bin/dev",
+    "prod": "pm2 start server/index.js --interpreter ./node_modules/.bin/babel-node",
     "clean": "rm -rf dist",
     "start-all": "concurrently \"cd server && nodemon 'bin/dev'\" \"cd client && npm start\""
   },

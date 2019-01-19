@@ -23,7 +23,7 @@ const app = express();
 // Middleware
 
 // forcing express to use build output from client
-app.use( express.static( `${__dirname}/../build` ) );
+//app.use( express.static( `${__dirname}/../build` ) );
 
 // response loggin tool
 app.use(morgan('dev'));

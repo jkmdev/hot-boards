@@ -1,0 +1,12 @@
+:local(.score) {
+    background-color: #f44336;
+    border-radius: 200px;
+    height: 50px;
+    width: 50px;
+}
+
+:local(.text) {
+    text-align: center;
+    line-height: 55px;
+    color: white;
+}

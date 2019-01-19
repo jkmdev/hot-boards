@@ -8,37 +8,23 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
 
-  state = {
-    data: []
-  };
-
-  componentDidMount() {
-    this.getDataFromDb();
-  }
-
-  getDataFromDb = () => {
-    fetch("/boards/General")
-      .then(data => {
-        console.log(data.json())
-      })
-      .then(res => this.setState({ data: res.data }));
-  };
-
   render() {
     return (
       <div>
+        
+        <header>
         <CssBaseline />
-        <head>
           <meta
               name="viewport"
               content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
           </meta>
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        </head>
+        </header>
 
         <Nav />
         <Board />
       </div>
+
     );
   }
 }
