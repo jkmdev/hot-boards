@@ -26,7 +26,7 @@ const postSchema = new Schema({
         required: true
     },
     comments: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.ObjectId,
         ref: 'Comment'
     }],
     clicks: {
@@ -46,18 +46,19 @@ const postSchema = new Schema({
 
 //Write some encryption for Password
 
-postSchema
-    .virtual('score', {
-        ref: 'score',
-        localField: 'score',
-        foreignField: 'clicks'
-    })
-    .get(function() {  
-        return this.clicks;
-    });
-
 postSchema.set('toObject', { virtuals: true });
 postSchema.set('toJSON', { virtuals: true });
+
+postSchema
+    .virtual('score')
+    .get(function() {  
+        var currentDays = Date.now() / (1000 * 60 * 60 * 24);
+        var activeDays = new Date(this.dateCreated).getTime() / (1000 * 60 * 60 * 24);
+        var ageInDays = currentDays - activeDays;
+        var lastValidDay = currentDays - activeDays - 7;
+        var sinceLastValidDay = ageInDays - lastValidDay;
+        return Math.round((this.comments.length + 7) - sinceLastValidDay);
+    });
 
 const Post = mongoose.model('Post', postSchema);
 export default Post;

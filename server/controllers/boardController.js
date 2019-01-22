@@ -55,16 +55,12 @@ boardController.get = (req, res) => {
             select: 'title content owner dateCreated score comments', 
             options: { 
                 sort: { 
-                    'dateCreated': -1 
-                },
-                limit: 50
+                    'dateCreated': 1
+                }
             },
             populate: {
                 path: 'owner'
-            },
-            // populate: {
-            //     path: 'comments'
-            // }
+            }
         })
         .exec()
         .then(board => {

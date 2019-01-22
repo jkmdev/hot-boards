@@ -14,7 +14,8 @@ class Board extends Component {
     data: Object,
     posts: [],
     title: string,
-    description: string
+    description: string,
+    open: false
   };
 
   componentDidMount() {
@@ -35,17 +36,30 @@ class Board extends Component {
   };
 
   createPosts(){
-    return this.state.posts.map((post, i) => {
-      return <ListItem 
-        key={i} 
-        title={post.title} 
-        content={post.content}
-        owner={post.owner.username}
-        commentCount={post.comments.length}
-      />
-      // return <div key={post._id}>{post.title}</div>
-    });
+    return this.state.posts
+      .sort((a, b) => a.score < b.score)
+      .map((post, i) => {
+        return <ListItem 
+            key={i} 
+            score={post.score}
+            title={post.title} 
+            content={post.content.substring(0, 50) + "..."}
+            owner={post.owner.username}
+            commentCount={post.comments.length}
+          />
+      });
   }
+
+  handleClickOpen = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleClose = value => {
+    // this.setState({ selectedValue: value, open: false });
+  };
+
   
   render() {
     const { posts } = this.state.posts;
@@ -54,10 +68,8 @@ class Board extends Component {
         <div className={styles.boardInfo}>
          <BoardInfo title={this.state.title} boardInfo={this.state.boardInfo}></BoardInfo>
         </div>
-        <div className={styles.posts}>
-          <div>
+        <div className={styles.posts} onClick={this.handleClickOpen}>
             {this.createPosts()}
-          </div>
         </div>
       </div>
     );

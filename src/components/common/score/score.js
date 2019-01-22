@@ -9,7 +9,7 @@ class ListItem extends Component {
       <div className={styles.score}>
         <Typography variant="h5">
             <div className={styles.text}>
-                20
+                {this.props.score}
             </div>
         </Typography>
       </div>
