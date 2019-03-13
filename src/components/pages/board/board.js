@@ -26,8 +26,8 @@ class Board extends Component {
     axios.get('http://localhost:3001/boards/General')
     .then(response => {
       this.setState({ posts: response.data.boardInfo.posts });
-      this.setState({ title: response.data.title });
-      this.setState({ boardInfo: response.data.description });
+      this.setState({ title: response.data.boardInfo.title });
+      this.setState({ boardInfo: response.data.boardInfo.description });
       console.log(this.state);
     })
     .catch(function (error) {
@@ -54,10 +54,6 @@ class Board extends Component {
     this.setState({
       open: true,
     });
-  };
-
-  handleClose = value => {
-    // this.setState({ selectedValue: value, open: false });
   };
 
   
