@@ -54,13 +54,11 @@ class Upload extends Component {
   };
 
   submitPost = () => {
-    console.log('submit post');
-    axios.post('http://localhost:3001/boards/General/submit', {
+    axios.post(`${process.env.REACT_APP_API}boards/General/submit`, {
       title: this.state.title,
       content: this.state.content
     })
     .then(response => {
-      console.log('it worked?');
       this.setState({ open: false });
     })
     .catch(function (error) {
@@ -135,7 +133,6 @@ Upload.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-// We need an intermediary variable for handling the recursive nesting.
 const UploadWrapped = withStyles(styles)(Upload);
 
 

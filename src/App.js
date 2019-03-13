@@ -3,7 +3,7 @@ import Nav from './components/layout/nav.js';
 import Board from './components/pages/board/board.js';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-// import axios from "axios";
+require('dotenv').config();
 
 class App extends Component {
 

@@ -25,7 +25,7 @@ boardController.post = (req, res) => {
                     request: {
                         type: 'GET',
                         description: 'GET_THIS_BOARD',
-                        url: 'http://localhost:3000/boards/' + newBoard.title
+                        url: `${process.env.REACT_APP}/boards/${newBoard.title}`
                     }
                 }
                 res.status(201).json(response);
@@ -72,7 +72,7 @@ boardController.get = (req, res) => {
                     request: {
                         type: 'PATCH',
                         description: 'UPDATE_THIS_BOARD',
-                        url: 'http://localhost:3000/boards/' + board.title
+                        url: `${process.env.REACT_APP}/boards/${board.title}`
                     }
                 }
                 res.status(200).json(response);
@@ -106,7 +106,7 @@ boardController.patch = (req, res) => {
                     request: {
                         type: 'GET',
                         description: 'GET_THIS_BOARD',
-                        url: 'http://localhost:3000/boards/' + board.title
+                        url: `${process.env.REACT_APP}/boards/${board.title}`
                     }
                 }
                 res.status(200).json(response);
@@ -147,7 +147,7 @@ boardController.submit = (req, res) => {
                     request: {
                         type: 'GET',
                         description: 'GET_THIS_BOARD',
-                        url: 'http://localhost:3000/boards/' + boardTitle
+                        url: `${process.env.REACT_APP}/boards/${board.title}`
                     }
                 }
                 res.status(200).json(response);

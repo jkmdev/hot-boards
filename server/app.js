@@ -1,5 +1,3 @@
-require('dotenv').load();
-
 import express from 'express';
 import mongoose from 'mongoose';
 //import bodyParser from 'body-parser';
@@ -12,9 +10,13 @@ import boardRoutes from './routes/boards';
 
 const path = require('path')
 
+require('dotenv').config();
+
+
+
 // connect database to application
 mongoose.connect(
-    'mongodb://localhost:27017/hb', () => {
+    process.env.DB, () => {
         console.log('Connected to mongodb');
     }
 );
@@ -54,7 +56,7 @@ app.use("/boards", boardRoutes);
 // match previously defined ones
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '/../build/index.html'));
-  })
+})
 
 // app-wide error handling
 app.use((req, res, next) => {

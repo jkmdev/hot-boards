@@ -22,7 +22,7 @@ class Board extends Component {
   }
 
   getDataFromDb = () => {
-    axios.get('http://localhost:3001/boards/General')
+    axios.get(`${process.env.REACT_APP_API}boards/General`)
     .then(response => {
       this.setState({ posts: response.data.boardInfo.posts });
       this.setState({ title: response.data.boardInfo.title });

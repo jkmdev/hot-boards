@@ -16,11 +16,6 @@ postController.get = (req, res) => {
                     message: "Post with id '" + postId + "' retrieved.",
                     commentCount: post.comments.length,
                     postInfo: post,
-                    // request: {
-                    //     type: 'PATCH',
-                    //     description: 'UPDATE_THIS_BOARD',
-                    //     url: 'http://localhost:3000/boards/' + board.title
-                    // }
                 }
                 res.status(200).json(response);
             } else {
@@ -58,11 +53,10 @@ postController.respond = (req, res) => {
                     request: {
                         type: 'GET',
                         description: 'GET_THIS_POST',
-                        url: 'http://localhost:3000/posts/' + postId
+                        url: `${process.env.REACT_APP}/posts/${postId}`
                     }
                 }
                 res.status(200).json(response);
-                //comment.save();
             } else {
                 res.status(404).json("Couldn't find post where id=" + postId);
             }
