@@ -14,6 +14,7 @@ function getModalStyle() {
   return {
     top: `${top}%`,
     left: `${left}%`,
+    width: `1000px`,
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
@@ -60,6 +61,7 @@ class Upload extends Component {
     })
     .then(response => {
       console.log('it worked?');
+      this.setState({ open: false });
     })
     .catch(function (error) {
       throw Error(error);
@@ -85,10 +87,9 @@ class Upload extends Component {
             <div style={getModalStyle()} className={classes.paper}>
 
               <Typography variant="h6" align="center">
-                Uploading to {this.props.boardName}
+                Upload                
               </Typography>
               
-
               <TextField
                 id="post-title"
                 label="Post Title"
@@ -115,21 +116,11 @@ class Upload extends Component {
                 required
                 fullWidth
                 helperText="Enter the text content for your post."
-                //error
               />
 
-              <div>
-                <Button onClick={this.submitPost} fullWidth>
-                  Submit
-                </Button>
-              </div>
-
-
-              <div>
-                Title: {this.state.title}
-                <br></br>
-                Content: {this.state.content}
-              </div>
+              <Button onClick={this.submitPost} variant="outlined" color="primary" fullWidth>
+                Submit
+              </Button>
 
             </div>
             
