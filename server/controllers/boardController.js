@@ -1,5 +1,4 @@
 import db from './../models';
-import { domainToASCII } from 'url';
 
 const mongoose = require('mongoose');
 

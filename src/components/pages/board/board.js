@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Dialog from '@material-ui/core/Dialog';
 
 import ListItem from '../../common/list-item/list-item.js';
 import BoardInfo from '../../common/board-info/board-info.js';
@@ -58,7 +57,6 @@ class Board extends Component {
 
   
   render() {
-    const { posts } = this.state.posts;
     return (
       <div className={styles.board}>
         <div className={styles.boardInfo}>

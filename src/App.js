@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Nav from './components/layout/nav.js';
 import Board from './components/pages/board/board.js';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 // import axios from "axios";

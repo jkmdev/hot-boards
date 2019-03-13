@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import axios from 'axios';
 
 function getModalStyle() {
   const top = 50;
@@ -52,11 +53,21 @@ class Upload extends Component {
   };
 
   submitPost = () => {
-
+    console.log('submit post');
+    axios.post('http://localhost:3001/boards/General/submit', {
+      title: this.state.title,
+      content: this.state.content
+    })
+    .then(response => {
+      console.log('it worked?');
+    })
+    .catch(function (error) {
+      throw Error(error);
+    })
   };
 
   render() {
-    const { classes, boardName, onClose, selectedValue, ...other } = this.props;
+    const { classes } = this.props;
 
     return (
       <div>
@@ -73,55 +84,51 @@ class Upload extends Component {
           >
             <div style={getModalStyle()} className={classes.paper}>
 
-              <div class="test">
+              <Typography variant="h6" align="center">
+                Uploading to {this.props.boardName}
+              </Typography>
+              
 
-                <Typography variant="h6" gutterBottom align="center">
-                  Uploading to {this.props.boardName}
-                </Typography>
-                
+              <TextField
+                id="post-title"
+                label="Post Title"
+                className={classes.textField}
+                value={this.state.title}
+                onChange={this.handleChange('title')}
+                margin="normal"
+                variant="outlined"
+                required
+                fullWidth
+                helperText="Enter the title for your post."
+              />
 
-                <TextField
-                  id="post-title"
-                  label="Post Title"
-                  className={classes.textField}
-                  value={this.state.title}
-                  onChange={this.handleChange('title')}
-                  margin="normal"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  helperText="Enter the title for your post."
-                />
+              <TextField
+                id="post-content"
+                label="Text Content"
+                className={classes.textField}
+                value={this.state.content}
+                onChange={this.handleChange('content')}
+                margin="normal"
+                variant="outlined"
+                multiline
+                rows="20"
+                required
+                fullWidth
+                helperText="Enter the text content for your post."
+                //error
+              />
 
-                <TextField
-                  id="post-content"
-                  label="Text Content"
-                  className={classes.textField}
-                  value={this.state.content}
-                  onChange={this.handleChange('content')}
-                  margin="normal"
-                  variant="outlined"
-                  multiline
-                  rows="20"
-                  required
-                  fullWidth
-                  helperText="Enter the text content for your post."
-                  //error
-                />
-
-                <div>
-                  <Button onClick={this.submitPost} fullWidth>
-                    Submit
-                  </Button>
-                </div>
+              <div>
+                <Button onClick={this.submitPost} fullWidth>
+                  Submit
+                </Button>
+              </div>
 
 
-                <div>
-                  Title: {this.state.title}
-                  <br></br>
-                  Content: {this.state.content}
-                </div>
-
+              <div>
+                Title: {this.state.title}
+                <br></br>
+                Content: {this.state.content}
               </div>
 
             </div>

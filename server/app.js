@@ -4,6 +4,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 //import bodyParser from 'body-parser';
 import morgan from 'morgan';
+import cors from 'cors';
 
 import userRoutes from './routes/users';
 import postRoutes from './routes/posts';
@@ -21,6 +22,8 @@ mongoose.connect(
 const app = express();
 
 // Middleware
+
+app.use(cors());
 
 // forcing express to use build output from client
 //app.use( express.static( `${__dirname}/../build` ) );
