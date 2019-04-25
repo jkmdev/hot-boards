@@ -1,18 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
-//import bodyParser from 'body-parser';
 import morgan from 'morgan';
-import cors from 'cors';
+import path from 'path';
 
 import userRoutes from './routes/users';
 import postRoutes from './routes/posts';
 import boardRoutes from './routes/boards';
 
-const path = require('path')
-
+const app = express();
 require('dotenv').config();
-
-
 
 // connect database to application
 mongoose.connect(
@@ -21,19 +17,12 @@ mongoose.connect(
     }
 );
 
-const app = express();
-
 // Middleware
-
-app.use(cors());
-
-// forcing express to use build output from client
-//app.use( express.static( `${__dirname}/../build` ) );
 
 // response loggin tool
 app.use(morgan('dev'));
 
-// parsing body in requests?
+// parsing body in post requests
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
@@ -52,20 +41,12 @@ app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 app.use("/boards", boardRoutes);
 
-// 'catchall' handler for requests that don't
-// match previously defined ones
+// 'catchall' handler for requests that don't match previously defined ones
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '/../build/index.html'));
 })
 
-// app-wide error handling
-app.use((req, res, next) => {
-    const error = new Error('Not Found');
-    error.status = 404;
-    next(error);
-});
-
-// more error handling
+// general error handler
 app.use((error, req, res, next) => {
     res.status(error.status || 500);
     res.json({

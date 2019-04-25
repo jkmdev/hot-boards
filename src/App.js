@@ -10,7 +10,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        
         <header>
         <CssBaseline />
           <meta
@@ -19,11 +18,9 @@ class App extends Component {
           </meta>
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         </header>
-
         <Nav />
         <Board />
       </div>
-
     );
   }
 }
