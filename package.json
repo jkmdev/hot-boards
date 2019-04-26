@@ -33,10 +33,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "react-scripts build && nodemon bin/dev",
     "prod": "pm2 start server/index.js --interpreter ./node_modules/.bin/babel-node",
     "clean": "rm -rf dist",
-    "start-all": "concurrently \"react-scripts build\" \"nodemon 'bin/dev'\""
+    "start": "concurrently \"nodemon 'bin/dev'\" \"react-scripts start\""
   },
   "eslintConfig": {
     "extends": "react-app"
