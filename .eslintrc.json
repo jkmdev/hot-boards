@@ -1,4 +1,5 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "es6": true
@@ -19,5 +20,9 @@
         "react"
     ],
     "rules": {
+        "indent": ["error", 2],
+        "react/jsx-indent": ["error", 2],
+        "react/jsx-indent-props": ["error", 2],
+        "no-console": "off" 
     }
 }
