@@ -31,7 +31,8 @@
     "express": "^4.16.4",
     "mongoose": "^5.4.2",
     "mongoose-unique-validator": "^2.0.2",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "yargs": "^13.2.2"
   },
   "scripts": {
     "client": "react-scripts start",
@@ -41,7 +42,8 @@
     "eject": "react-scripts eject",
     "prod": "pm2 start server/index.js --interpreter ./node_modules/.bin/babel-node",
     "clean": "rm -rf dist",
-    "start": "concurrently \"nodemon 'bin/dev'\" \"react-scripts start\""
+    "start": "concurrently \"nodemon 'bin/dev'\" \"react-scripts start\"",
+    "migrate": "node ./scripts/migrate"
   },
   "eslintConfig": {
     "extends": "react-app"

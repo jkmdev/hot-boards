@@ -24,10 +24,10 @@ let db = mongoose.connection;
 //database error handling
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('connected', function() {
-    console.info("MongoDB Atlas connection established successfully");
+    console.info("MongoDB connection established successfully");
 });
 db.once('open', function callback () {
-    console.log("MongoDB Atlas connection open");
+    console.log("MongoDB connection open");
 });
 
 // Middleware

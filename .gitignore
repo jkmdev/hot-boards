@@ -14,6 +14,9 @@
 # production
 /build
 
+#mongodb data migration
+/migration
+
 # misc
 .DS_Store
 .env.local
