@@ -12,10 +12,23 @@ require('dotenv').config();
 
 // connect database to application
 mongoose.connect(
-    process.env.DB, () => {
+    process.env.DB, 
+    { useNewUrlParser: true },
+    () => {
         console.log('Connected to mongodb');
     }
 );
+mongoose.Promise = global.Promise;
+let db = mongoose.connection;
+
+//database error handling
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('connected', function() {
+    console.info("MongoDB Atlas connection established successfully");
+});
+db.once('open', function callback () {
+    console.log("MongoDB Atlas connection open");
+});
 
 // Middleware
 
