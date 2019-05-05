@@ -4,8 +4,8 @@ import Board from './board';
 import Comment from './comment';
 
 export default {
-    User,
-    Post,
-    Board,
-    Comment
+  User,
+  Post,
+  Board,
+  Comment,
 };
